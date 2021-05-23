@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Panse.Models.Jewelry>
+
+<a asp-action="Index" asp-route-Id="0" class="btn btn-primary" style="margin-right: 15px; margin-bottom: 30px">Ring</a>
+<a asp-action="Index" asp-route-Id="1" class="btn btn-primary" style="margin-right: 15px; margin-bottom: 30px">Necklace</a>
+<br />
+
+@*foreach (var jewelry in Model)
+{
+    <img src=@jewelry.Img width="200" heigth="300">
+}*@
+
+<div class="card-columns">
+    @foreach (var product in Model)
+    {
+        <div class="card" style="width: 22rem; height: 35rem">
+            <img class="card-img-top" src="@product.Img" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@product.Cost - @product.Sale</h5>
+                <h6>ID: @product.Id</h6>
+                @if (product.Amount == 0)
+                {
+                    <p style="color: red;">Tạm hết hàng</p>
+                }
+                @if (product.Amount != 0)
+                {
+                    <p style="color: green;">Còn hàng</p>
+                }
+                @* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> *@
+                <a href="@product.Img" target="_blank" class="btn btn btn-primary">Detail</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
